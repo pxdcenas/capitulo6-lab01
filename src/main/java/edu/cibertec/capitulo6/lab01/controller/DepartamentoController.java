@@ -26,6 +26,15 @@ public class DepartamentoController {
         return ip;
     }
 
+    @Operation(summary = "Obtener un departamento por Id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Departamento encontrado",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Departamento.class))}),
+            @ApiResponse(responseCode = "400", description = "Departamento inválido",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "Departamento no encontrado",
+                    content = @Content)})
     @GetMapping("/{id}")
     public Departamento buscarDepartamento(@PathVariable Long id) {
         return departamentoService.buscarDepartamento(id);
@@ -37,18 +46,18 @@ public class DepartamentoController {
     }
 
     @PostMapping
-    public Departamento registrarDepartamento(@RequestBody Departamento departamento){
+    public Departamento registrarDepartamento(@RequestBody Departamento departamento) {
         return departamentoService.registrarDepartamento(departamento);
     }
 
     @PutMapping("/{id}")
-    public Departamento actualizarDepartamento(@PathVariable Long id, @RequestBody Departamento departamento){
+    public Departamento actualizarDepartamento(@PathVariable Long id, @RequestBody Departamento departamento) {
         departamento.setId(id);
         return departamentoService.actualizarDepartamento(departamento);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarDepartamento(@PathVariable Long id){
+    public void eliminarDepartamento(@PathVariable Long id) {
         departamentoService.eliminarDepartamento(id);
     }
 }
