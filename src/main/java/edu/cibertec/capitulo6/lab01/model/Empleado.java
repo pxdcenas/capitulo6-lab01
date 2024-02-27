@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-public class Empleado {
+public class Empleado extends RepresentationModel<Empleado> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

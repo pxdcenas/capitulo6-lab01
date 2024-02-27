@@ -17,4 +17,6 @@ public class Departamento {
     @Column(name = "descripcion", length = 100, nullable = false)
     private String descripcion;
 
+
+
 }
