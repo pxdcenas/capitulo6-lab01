@@ -1,5 +1,6 @@
 package edu.cibertec.capitulo6.lab01.service.impl;
 
+import edu.cibertec.capitulo6.lab01.model.Departamento;
 import edu.cibertec.capitulo6.lab01.model.Empleado;
 import edu.cibertec.capitulo6.lab01.repository.EmpleadoRepository;
 import edu.cibertec.capitulo6.lab01.service.EmpleadoService;
@@ -32,6 +33,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public Empleado buscarEmpleado(Long id) {
         return empleadoRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Empleado> buscarEmpleadosPorDepartamento(Departamento departamento) {
+        return empleadoRepository.findByDepartamento(departamento);
     }
 
     @Override

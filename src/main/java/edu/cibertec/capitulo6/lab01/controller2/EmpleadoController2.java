@@ -28,8 +28,8 @@ public class EmpleadoController2 {
     @GetMapping("/{id}")
     public ResponseEntity<Empleado> buscarEmpleado(@PathVariable Long id) {
         Empleado empleado = empleadoService.buscarEmpleado(id);
-        empleado.add(linkTo(methodOn(EmpleadoController2.class).buscarEmpleado(empleado.getId())).withSelfRel());
-        empleado.add(WebMvcLinkBuilder.linkTo(methodOn(DepartamentoController.class).buscarDepartamento(empleado.getDepartamento().getId())).withRel("departamento"));
+        empleado.add(linkTo(methodOn(EmpleadoController2.class).buscarEmpleado(id)).withSelfRel());
+        empleado.add(linkTo(methodOn(DepartamentoController2.class).buscarDepartamento(empleado.getDepartamento().getId())).withRel("departamento"));
         return ResponseEntity.ok(empleado);
     }
 
